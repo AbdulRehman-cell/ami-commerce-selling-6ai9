@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: ami-commerce-app
+    env: docker
+    plan: starter
+    region: oregon
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: MONGODB_URI
+        fromDatabase:
+          name: ami-commerce-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CORS_ORIGIN
+        value: https://ami-commerce-app.onrender.com
+
+databases:
+  - name: ami-commerce-db
+    plan: starter
+    databaseName: amicommerce
+    user: amicommerce_user
+    ipAllowList: []
