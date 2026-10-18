@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ami-commerce-selling-6ai9</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="root"><div class="app-loading"><div class="spinner"></div></div></div>
+    <script type="module" src="/src/main.jsx"></script>
+    <script>(function(){
+  function enhance(){
+    var navs = document.querySelectorAll('header nav, .site-header nav, .navbar nav, header .nav-links');
+    for (var i = 0; i < navs.length; i++) {
+      var nav = navs[i];
+      var header = nav.closest('header, .site-header, .navbar, .main-header') || nav.parentElement;
+      if (!header || header.querySelector('.nav-toggle')) continue;
+      var btn = document.createElement('button');
+      btn.type = 'button'; btn.className = 'nav-toggle'; btn.setAttribute('aria-label', 'Toggle menu');
+      btn.innerHTML = '<span></span><span></span><span></span>';
+      (function(nav){
+        btn.addEventListener('click', function(){ nav.classList.toggle('nav-open'); });
+        nav.addEventListener('click', function(e){ if (e.target && e.target.closest && e.target.closest('a')) nav.classList.remove('nav-open'); });
+      })(nav);
+      // Insert into the nav's own flex row (with the brand) so it sits level with
+      // the logo — not appended to the outer <header> where it drops to a new line.
+      (nav.parentElement || header).appendChild(btn);
+    }
+  }
+  if (document.readyState !== 'loading') enhance(); else document.addEventListener('DOMContentLoaded', enhance);
+  try { new MutationObserver(enhance).observe(document.documentElement, { childList: true, subtree: true }); } catch (e) {}
+  // Add .scrolled class to ALL headers at 60px scroll — works regardless of the
+  // class the AI chose (nav-minimal, nav-pill, site-header, or plain header).
+  function watchScroll(){
+    var headers = document.querySelectorAll('header, .site-header, .navbar, .main-header');
+    if (!headers.length) return;
+    function onScroll(){ var y = window.scrollY || window.pageYOffset; for (var i=0;i<headers.length;i++){ headers[i].classList.toggle('scrolled', y > 60); } }
+    window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  }
+  if (document.readyState !== 'loading') watchScroll(); else document.addEventListener('DOMContentLoaded', watchScroll);
+})();</script>
+  </body>
+</html>
